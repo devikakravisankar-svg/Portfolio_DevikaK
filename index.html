@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Devika K - Professional Portfolio showcasing AI, ML, and web projects.">
+    <title>Devika K | Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons for beautiful, modern icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Stylesheets -->
+    <style>
+/* CSS Variables for Theme */
+:root {
+    /* Colors - Dark Theme */
+    --bg-primary: #0a0a0f; /* Slightly deeper blue-black */
+    --bg-secondary: #12121a;
+    --bg-tertiary: rgba(26, 26, 36, 0.6); /* Transparent for glassmorphism */
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-accent: #60a5fa; 
+    
+    /* Gradients */
+    --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --accent-gradient-hover: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-glass: rgba(255, 255, 255, 0.15);
+    
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    
+    /* Spacing & Sizing */
+    --max-width: 1200px;
+    --section-padding: 100px 20px;
+    
+    /* Effects */
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.2s ease-in-out;
+    --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.5);
+    --shadow-hover: 0 20px 40px -10px rgba(139, 92, 246, 0.3); /* Purple glow */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Glowing Orbs */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+body::before {
+    width: 500px;
+    height: 500px;
+    background: #3b82f6;
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    width: 400px;
+    height: 400px;
+    background: #8b5cf6;
+    bottom: -100px;
+    right: -100px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section {
+    padding: var(--section-padding);
+}
+
+.bg-alt {
+    background-color: var(--bg-secondary);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Gradient Text Utility */
+.text-gradient {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.text-center .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn-primary:hover {
+    background: var(--accent-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary-outline::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--accent-gradient);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.btn-primary-outline:hover {
+    border-color: transparent;
+}
+
+.btn-primary-outline:hover::before {
+    opacity: 1;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    transition: all var(--transition-fast);
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-links a:hover:not(.btn) {
+    color: var(--text-accent);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 80px;
+}
+
+.hero-content {
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 15px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background-color: var(--text-accent);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 20px); opacity: 0; }
+}
+
+/* Glassmorphism Cards Container */
+.glass-card {
+    background: var(--bg-tertiary);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: var(--shadow-glass);
+    transition: transform var(--transition-slow), border-color var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: var(--shadow-hover);
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-category h3 i {
+    color: var(--text-accent);
+}
+
+.skill-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.skill-list li {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.skill-list li:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--accent-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.project-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.project-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tags span {
+    background: rgba(139, 92, 246, 0.1);
+    color: #a78bfa;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.project-link {
+    font-weight: 600;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+}
+
+.project-link:hover {
+    color: var(--text-accent);
+    gap: 10px;
+}
+
+/* Contact Section */
+.contact-desc {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}
+
+/* Footer */
+.footer {
+    padding: 3rem 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-primary);
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .section {
+        padding: 60px 20px;
+    }
+}
+
+/* Animations */
+
+/* Base invisible state for elements that will be animated in */
+.fade-in-up, 
+.fade-in-left, 
+.fade-in-right {
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.fade-in-up {
+    transform: translateY(40px);
+}
+
+.fade-in-left {
+    transform: translateX(-40px);
+}
+
+.fade-in-right {
+    transform: translateX(40px);
+}
+
+/* Active state classes added by JS */
+.is-visible {
+    animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in-left.is-visible {
+    animation: fadeLeftIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in-right.is-visible {
+    animation: fadeRightIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Support for staggered animations using CSS variables */
+[style*="--delay"] {
+    animation-delay: var(--delay);
+}
+
+/* Keyframes */
+@keyframes fadeUpIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeLeftIn {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeRightIn {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Initial load animation for hero elements */
+.hero .fade-in-up {
+    animation: fadeUpIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <i class='bx bx-terminal text-gradient'></i> DK.
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home"><i class='bx bx-home-alt'></i> Home</a></li>
+                <li><a href="#about"><i class='bx bx-user'></i> About</a></li>
+                <li><a href="#education"><i class='bx bxs-graduation'></i> Education</a></li>
+                <li><a href="#certifications"><i class='bx bx-award'></i> Certifications</a></li>
+                <li><a href="#skills"><i class='bx bx-code-block'></i> Skills</a></li>
+                <li><a href="#projects"><i class='bx bx-briefcase'></i> Projects</a></li>
+                <li><a href="#contact" class="btn btn-primary-outline"><i class='bx bx-envelope'></i> Contact Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero section">
+        <div class="container hero-content fade-in-up">
+            <h2 class="hero-subtitle text-gradient">Welcome to my universe</h2>
+            <h1 class="hero-title">Hi, I'm <span class="text-gradient">Devika K</span></h1>
+            <p class="hero-description">
+                B.Tech student specialising in <strong style="color: #fff;">Artificial Intelligence & Machine Learning</strong> at Vidya Academy of Science and Technology. I build intelligent systems that make the world a little easier to understand.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary"><i class='bx bx-layer'></i> View My Work</a>
+                <a href="#contact" class="btn btn-secondary"><i class='bx bx-message-square-dots'></i> Get In Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text fade-in-left">
+                    <p>I'm a first-year B.Tech student in Artificial Intelligence & Machine Learning, passionate about turning data into insight and code into solutions that matter.</p>
+                    <p>My interests span Artificial Intelligence, Machine Learning, Computer Vision, and Robotics. I enjoy building projects at the intersection of real-world problems and emerging technology, from air quality dashboards to exploring the frontiers of intelligent systems.</p>
+                    <p>When I'm not writing code, I'm experimenting with new ML concepts, contributing to open-source, and continuously levelling up my problem-solving skills.</p>
+                </div>
+                <div class="about-stats fade-in-right">
+                    <div class="glass-card stat-card text-center">
+                        <h3 class="stat-number text-gradient"><i class='bx bx-brain'></i> AI/ML</h3>
+                        <p class="stat-label" style="justify-content: center;">Specialisation</p>
+                    </div>
+                    <div class="glass-card stat-card text-center">
+                        <h3 class="stat-number text-gradient">7+</h3>
+                        <p class="stat-label" style="justify-content: center;"><i class='bx bx-folder-open'></i> Projects Built</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education Journey</h2>
+            <div class="projects-grid">
+                <article class="glass-card project-card fade-in-up">
+                    <div class="project-icon-wrapper"><i class='bx bxs-graduation'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">B.Tech in AI & ML</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> Vidya Academy of Science and Technology</p>
+                        <p class="project-desc">Currently in my 1st Year (2025 – 2029). Focusing on foundational AI concepts, algorithms, and practical applications in machine learning.</p>
+                    </div>
+                </article>
+                
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.1s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);"><i class='bx bx-book-bookmark'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Higher Secondary (12th Grade)</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> NSS Higher Secondary School, Mullurkara</p>
+                        <p class="project-desc">Completed in March 2025. Computer Science Stream with an outstanding score of <strong style="color:#fff;">1053 / 1200 (87.75%)</strong>.</p>
+                    </div>
+                </article>
+                
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.2s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);"><i class='bx bx-award'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Secondary School (10th Grade)</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> SKHSS Anandapuram</p>
+                        <p class="project-desc">Completed in March 2023 with an exceptional <strong style="color:#fff;">97% (Full A+)</strong>.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <div class="projects-grid">
+                
+                <article class="glass-card project-card fade-in-up">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);"><i class='bx bx-award'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Young Innovators Program 8.0</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> K-DISC</p>
+                        <p class="project-desc">Awarded Certificate of Appreciation for completing the Voice of Stakeholder (VOS) Training, focusing on innovation and strategic problem solving.</p>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.1s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);"><i class='bx bx-certification'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Algorithmic Thinking with Python</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> CodeTantra</p>
+                        <p class="project-desc">Completed an intensive 3-month course mastering Python programming and core algorithmic problem-solving techniques.</p>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.2s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);"><i class='bx bx-laptop'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Digital Edge 101</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> NASSCOM & FutureSkills Prime</p>
+                        <p class="project-desc">Aligned to competency standards developed by the IT-ITeS Sector Skills Council, focusing on modern digital technologies.</p>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #ef4444 0%, #8b5cf6 100%);"><i class='bx bx-code-block'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">HTML Training Completion</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> IIT Bombay (Spoken Tutorial)</p>
+                        <p class="project-desc">Passed a proctored online exam conducted by EduPyramids, mastering foundational web development technologies.</p>
+                    </div>
+                </article>
+                
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.1s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);"><i class='bx bx-terminal'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Programming in C</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> CodeTantra</p>
+                        <p class="project-desc">Successfully completed the semester-long course focusing on core concepts, syntax, and practical programming in C.</p>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.2s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);"><i class='bx bxl-html5'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">HTML5 - The Language</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> Infosys Springboard</p>
+                        <p class="project-desc">Awarded course completion certificate for successfully completing the comprehensive HTML5 language course.</p>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.3s">
+                    <div class="project-icon-wrapper" style="background: linear-gradient(135deg, #ef4444 0%, #3b82f6 100%);"><i class='bx bx-bulb'></i></div>
+                    <div class="project-content">
+                        <h3 class="project-title">YIP 8.0 Idea Recognition</h3>
+                        <p style="font-weight: 600; margin-bottom: 15px; color: var(--text-secondary);"><i class='bx bx-building'></i> K-DISC</p>
+                        <p class="project-desc">Awarded Certificate of Recognition for successfully submitting an innovative idea and demonstrating strong critical thinking skills.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-category fade-in-up" style="--delay: 0.1s">
+                    <h3><i class='bx bx-code-alt'></i> Languages</h3>
+                    <ul class="skill-list">
+                        <li><i class='bx bxl-python text-gradient'></i> Python</li>
+                        <li><i class='bx bx-copyright text-gradient'></i> C / C++</li>
+                        <li><i class='bx bxl-javascript text-gradient'></i> JavaScript</li>
+                        <li><i class='bx bxl-html5 text-gradient'></i> HTML</li>
+                    </ul>
+                </div>
+                <div class="glass-card skill-category fade-in-up" style="--delay: 0.2s">
+                    <h3><i class='bx bx-microchip'></i> Technologies</h3>
+                    <ul class="skill-list">
+                        <li><i class='bx bx-bot'></i> Artificial Intelligence</li>
+                        <li><i class='bx bx-line-chart'></i> Machine Learning</li>
+                        <li><i class='bx bx-scan'></i> Computer Vision</li>
+                        <li><i class='bx bx-bar-chart-alt-2'></i> Data Visualization</li>
+                    </ul>
+                </div>
+                <div class="glass-card skill-category fade-in-up" style="--delay: 0.3s">
+                    <h3><i class='bx bx-wrench'></i> Tools & Practices</h3>
+                    <ul class="skill-list">
+                        <li><i class='bx bxl-github'></i> Git & GitHub</li>
+                        <li><i class='bx bx-cog'></i> AI Tools</li>
+                        <li><i class='bx bx-bulb'></i> Problem Solving</li>
+                        <li><i class='bx bx-git-pull-request'></i> Open-source</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My Works</h2>
+            <div class="projects-grid">
+                
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.1s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-wind text-gradient'></i> AirAlert</h3>
+                        <p class="project-desc">A live air quality dashboard tracking real-time PM2.5, AQI, and pollutant data. Provides health recommendations and trend visualisations.</p>
+                        <div class="project-tags">
+                            <span>HTML/JS</span>
+                            <span>Open-Meteo API</span>
+                            <span>Data Viz</span>
+                        </div>
+                        <a href="https://devikakravisankar-svg.github.io/AirAlert/" target="_blank" class="project-link">Live Demo <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.2s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-calculator text-gradient'></i> Aura Calc</h3>
+                        <p class="project-desc">A modern calculator with a sleek, elegant UI. Supports all basic arithmetic operations wrapped in a visually stunning glass-effect design.</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS/JS</span>
+                            <span>Glassmorphism</span>
+                        </div>
+                        <a href="https://devikakravisankar-svg.github.io/Calculator/" target="_blank" class="project-link">Live Demo <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.3s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-cloud text-gradient'></i> Live Weather</h3>
+                        <p class="project-desc">A dynamic dashboard fetching real-time weather data for any city — displaying temperature, humidity, wind speed, and conditions.</p>
+                        <div class="project-tags">
+                            <span>HTML/JS</span>
+                            <span>OpenWeather API</span>
+                        </div>
+                        <a href="https://devikakravisankar-svg.github.io/Live_Weather_Dashboard/" target="_blank" class="project-link">Live Demo <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.1s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-globe text-gradient'></i> Country Explorer</h3>
+                        <p class="project-desc">Interactive explorer to search any country and instantly view its flag, capital, population, and currency.</p>
+                        <div class="project-tags">
+                            <span>HTML/JS</span>
+                            <span>REST Countries API</span>
+                        </div>
+                        <a href="https://devikakravisankar-svg.github.io/Country_Info_Explorer/" target="_blank" class="project-link">Live Demo <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </article>
+                
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.2s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-wallet text-gradient'></i> Budget Tracker</h3>
+                        <p class="project-desc">A personal finance tracker that helps manage income and expenses, tracking balances using local storage.</p>
+                        <div class="project-tags">
+                            <span>HTML/JS</span>
+                            <span>Local Storage</span>
+                        </div>
+                        <a href="https://devikakravisankar-svg.github.io/Budget_Tracker/" target="_blank" class="project-link">Live Demo <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </article>
+                
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.3s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-happy-alt text-gradient'></i> Quiz & Joke Gen</h3>
+                        <p class="project-desc">Interactive API-driven web apps including a quiz tester and a joke/quote generator for daily motivation.</p>
+                        <div class="project-tags">
+                            <span>HTML/JS</span>
+                            <span>Multiple APIs</span>
+                        </div>
+                        <a href="https://devikakravisankar-svg.github.io/Random_Quiz_Web/" target="_blank" class="project-link">Live Demo <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </article>
+
+                <article class="glass-card project-card fade-in-up" style="--delay: 0.1s">
+                    <div class="project-content">
+                        <h3 class="project-title"><i class='bx bx-fingerprint text-gradient'></i> Finger Detection</h3>
+                        <p class="project-desc">A computer vision project implementing real-time finger detection and tracking using Python and modern CV libraries.</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Computer Vision</span>
+                            <span>Machine Learning</span>
+                        </div>
+                        <a href="https://github.com/devikakravisankar-svg/Finger_Detection" target="_blank" class="project-link">View Repository <i class='bx bxl-github'></i></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-alt">
+        <div class="container text-center">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="contact-desc fade-in-up">I'm always open to collaborations, internships, research opportunities, and interesting conversations about AI. Let's build something great together!</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;" class="fade-in-up" style="--delay: 0.2s">
+                <a href="mailto:devikakmenon333@gmail.com" class="btn btn-primary"><i class='bx bx-envelope'></i> Email Me</a>
+                <a href="https://github.com/devikakravisankar-svg" target="_blank" class="btn btn-secondary"><i class='bx bxl-github'></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/devika-k-10996a386" target="_blank" class="btn btn-secondary"><i class='bx bxl-linkedin-square'></i> LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Devika K. Built with care, code, and <i class='bx bxs-heart' style="color:#ef4444;"></i> curiosity.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Intersection Observer for Scroll Animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // Trigger when 15% of element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add class to trigger animation
+                entry.target.classList.add('is-visible');
+                // Optional: Stop observing once animated
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Select all elements to animate
+    const animateElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+    
+    // Except those in the hero section which animate on load
+    animateElements.forEach(el => {
+        if (!el.closest('.hero')) {
+            observer.observe(el);
+        }
+    });
+
+    // 2. Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+            navbar.style.padding = '15px 0';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.8)';
+            navbar.style.boxShadow = 'none';
+            navbar.style.padding = '20px 0';
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
