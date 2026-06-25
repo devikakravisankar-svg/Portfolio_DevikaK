@@ -548,9 +548,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
     }
     
     .about-grid {
@@ -702,7 +734,10 @@ h1, h2, h3, h4, h5, h6 {
             <a href="#home" class="logo">
                 <i class='bx bx-terminal text-gradient'></i> DK.
             </a>
-            <ul class="nav-links">
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class='bx bx-menu'></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home"><i class='bx bx-home-alt'></i> Home</a></li>
                 <li><a href="#about"><i class='bx bx-user'></i> About</a></li>
                 <li><a href="#education"><i class='bx bxs-graduation'></i> Education</a></li>
@@ -1082,7 +1117,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Navbar Scroll Effect
+    // Mobile Menu Toggle
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const navLinks = document.getElementById('nav-links');
+
+if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileBtn.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('bx-menu');
+            icon.classList.add('bx-x');
+        } else {
+            icon.classList.remove('bx-x');
+            icon.classList.add('bx-menu');
+        }
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = mobileBtn.querySelector('i');
+            icon.classList.remove('bx-x');
+            icon.classList.add('bx-menu');
+        });
+    });
+}
+
+// 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
     
     window.addEventListener('scroll', () => {
