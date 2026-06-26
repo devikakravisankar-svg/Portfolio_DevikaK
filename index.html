@@ -18,7 +18,8 @@
     <script>
         // Apply theme immediately to prevent Flash of Unstyled Content
         (function() {
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            let savedTheme = 'dark';
+            try { savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); } catch(e) { savedTheme = 'dark'; }
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
@@ -99,6 +100,11 @@
     align-items: center;
     justify-content: center;
     transition: var(--transition-fast);
+    padding: 8px; /* Increase touch target */
+    border-radius: 50%;
+}
+.theme-toggle:active {
+    background: rgba(139, 92, 246, 0.1); /* Provide active feedback */
 }
 
 .theme-toggle:hover {
@@ -613,6 +619,11 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
     font-size: 2.2rem;
     cursor: pointer;
+    padding: 8px; /* Increase touch target */
+    border-radius: 50%;
+}
+.menu-toggle:active {
+    background: rgba(139, 92, 246, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -1168,7 +1179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.classList.add('theme-transition');
         
         document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        try { localStorage.setItem('theme', newTheme); } catch(e) {}
         updateThemeIcon(newTheme);
         
         // Remove class after transition finishes
