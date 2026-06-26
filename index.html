@@ -81,14 +81,6 @@
     --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
 }
 
-/* Perfect Theme Transition Sync */
-.theme-transition,
-.theme-transition *,
-.theme-transition *::before,
-.theme-transition *::after {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease !important;
-}
-
 /* Theme Toggle */
 .theme-toggle {
     background: transparent;
@@ -1179,17 +1171,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
-        // Add class to force universal transition
-        document.documentElement.classList.add('theme-transition');
-        
+        // Apply theme instantly — no animation delay
         document.documentElement.setAttribute('data-theme', newTheme);
         try { localStorage.setItem('theme', newTheme); } catch(e) {}
         updateThemeIcon(newTheme);
-        
-        // Remove class after transition finishes
-        setTimeout(() => {
-            document.documentElement.classList.remove('theme-transition');
-        }, 300);
     }
 
     // Use pointerdown for instant response on mobile (no 300ms delay)
