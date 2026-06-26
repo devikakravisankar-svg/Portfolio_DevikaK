@@ -113,6 +113,10 @@
 }
 
 /* Reset & Base Styles */
+button, a {
+    touch-action: manipulation; /* Removes 300ms click delay on mobile */
+    -webkit-tap-highlight-color: transparent;
+}
 * {
     margin: 0;
     padding: 0;
