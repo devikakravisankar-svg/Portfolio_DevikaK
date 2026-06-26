@@ -1175,7 +1175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentInitialTheme = document.documentElement.getAttribute('data-theme');
     updateThemeIcon(currentInitialTheme);
 
-    themeToggle.addEventListener('click', () => {
+    function applyThemeToggle() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
@@ -1190,6 +1190,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.documentElement.classList.remove('theme-transition');
         }, 300);
+    }
+
+    // Use pointerdown for instant response on mobile (no 300ms delay)
+    themeToggle.addEventListener('pointerdown', (e) => {
+        e.preventDefault(); // Prevent the subsequent click event from also firing
+        applyThemeToggle();
     });
 
     function updateThemeIcon(theme) {
